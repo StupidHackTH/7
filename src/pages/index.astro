@@ -1,11 +1,30 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Progress from "../components/Progress.astro";
+import Airtable from 'airtable';
+
+const base = new Airtable({apiKey: import.meta.env.AIRTABLE_API_KEY}).base(import.meta.env.AIRTABLE_BASE_ID);
+
+var goalAmount: number = 100000;
+var percentage: number = 0;
+
+async function getSponsoredAmount() {
+  let amount:number = 0;
+  const records = await base('sponsors').select().all()
+  
+  records.forEach(function(record) {
+    amount += +record.get('Amount')
+  });
+
+  return amount
+}
+
+percentage = (await getSponsoredAmount() / goalAmount) * 100
 ---
 
 <Layout title="Welcome to Astro.">
   <main>
     <h1>The โง่ Hackathon ครั้งที่ 7 เเห่งประเทศ Thailand</h1>
-    <Progress value={100} />
+    <Progress value={percentage} />
   </main>
 </Layout>
