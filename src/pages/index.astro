@@ -1,8 +1,26 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Progress from "../components/Progress.astro";
+import Airtable from "airtable";
 
-const progress = 69;
+const base = new Airtable({ apiKey: import.meta.env.AIRTABLE_API_KEY }).base(
+  import.meta.env.AIRTABLE_BASE_ID
+);
+
+var goalAmount = 100000;
+
+async function getSponsoredAmount() {
+  let amount = 0;
+  const records = await base("sponsors").select().all();
+
+  records.forEach(function (record) {
+    amount += +record.get("Amount");
+  });
+
+  return amount;
+}
+
+const progress = ((await getSponsoredAmount()) / goalAmount) * 100;
 ---
 
 <Layout
