@@ -1,23 +1,30 @@
 ---
 export interface Props {
-    value: number;
+  value: number;
 }
 
 const { value } = Astro.props;
-const percent: string = String(value) + '%';
+const percent: string = String(value) + "%";
 ---
-<div class="bg-white justify-start rounded-full items-center relative py-1 flex h-10 w-96">
-    <div class="bg-rose-500  rounded-full h-8 w-0 progress-value m-1 items-center" ></div>
+
+<div
+  class="relative flex h-10 w-96 items-center justify-start rounded-full bg-white py-1"
+>
+  <div class="progress-value m-1 h-8 w-0 items-center rounded-full bg-rose-500">
+  </div>
 </div>
 
 <!-- someone pls translate this to tailwind -->
 <style define:vars={{ percent }}>
-    .progress-value {
-        animation: load 3s normal forwards;  
+  .progress-value {
+    animation: load 3s normal forwards;
+  }
+  @keyframes load {
+    0% {
+      width: 0;
     }
-    @keyframes load {
-        0% { width: 0; }
-        100% { width: var(--percent); }
+    100% {
+      width: var(--percent);
     }
+  }
 </style>
-
