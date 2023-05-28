@@ -26,6 +26,8 @@ concurrency:
 
 env:
   BUILD_PATH: "." # default value when not using subfolders
+  AIRTABLE_API_KEY: ${{secret.AIRTABLE_API_KEY}}
+  AIRTABLE_BASE_ID: ${{secret.AIRTABLE_BASE_ID}}
   # BUILD_PATH: subfolder
 
 jobs:
