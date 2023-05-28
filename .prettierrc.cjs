@@ -1,6 +1,6 @@
 // @ts-check
 
-/** @type {import("prettier").Config} */
+/** @satisfies {import("prettier").Config} */
 const config = {
   bracketSpacing: true,
   tabWidth: 2,
@@ -8,10 +8,7 @@ const config = {
   singleQuote: false,
   semi: true,
   printWidth: 80,
-  plugins: [
-    "prettier-plugin-astro",
-    "prettier-plugin-tailwindcss",
-  ],
+  plugins: ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
   pluginSearchDirs: false,
 };
 
