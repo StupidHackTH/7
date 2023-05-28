@@ -43,7 +43,7 @@ jobs:
             echo "command=i" >> $GITHUB_OUTPUT
             echo "runner=pnpm" >> $GITHUB_OUTPUT
             exit 0
-          if [ -f "${{ github.workspace }}/yarn.lock" ]; then
+          elif [ -f "${{ github.workspace }}/yarn.lock" ]; then
             echo "manager=yarn" >> $GITHUB_OUTPUT
             echo "command=install" >> $GITHUB_OUTPUT
             echo "runner=yarn" >> $GITHUB_OUTPUT
@@ -57,6 +57,12 @@ jobs:
             echo "Unable to determine package manager"
             exit 1
           fi
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
