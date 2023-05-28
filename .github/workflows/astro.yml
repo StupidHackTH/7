@@ -26,9 +26,6 @@ concurrency:
 
 env:
   BUILD_PATH: "." # default value when not using subfolders
-  AIRTABLE_API_KEY: ${{secret.AIRTABLE_API_KEY}}
-  AIRTABLE_BASE_ID: ${{secret.AIRTABLE_BASE_ID}}
-  # BUILD_PATH: subfolder
 
 jobs:
   build:
@@ -53,6 +50,9 @@ jobs:
           pnpm astro build \
             --site "${{ steps.pages.outputs.origin }}" \
             --base "${{ steps.pages.outputs.base_path }}"
+        env:
+          AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+          AIRTABLE_BASE_ID: ${{ secrets.AIRTABLE_BASE_ID }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
