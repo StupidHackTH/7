@@ -1,7 +1,9 @@
 ---
+import "../app.css";
+
 export interface Props {
   title: string;
-  description: string
+  description: string;
 }
 
 const { title, description } = Astro.props;
@@ -33,6 +35,16 @@ const { title, description } = Astro.props;
 
     <!-- favicons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- fonts -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Space+Mono:r,b&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Thai+Looped:r,b&display=swap"
+    />
   </head>
   <body>
     <slot />
