@@ -28,12 +28,16 @@ const progress = ((await getSponsoredAmount()) / goalAmount) * 100;
   description="หลังจากที่ได้รับการตอบรับเป็นอย่างดีมาตลอดใน The Stupid Hackathon Thailand ทั้ง 6 ครั้ง, ปีนี้เรากลับมาแล้วกับ The โง่ Hackathon ครั้งที่ 7 แห่งประเทศ Thailand!"
 >
   <main class="flex flex-col items-center gap-4 px-16">
-    <section class="min-h-screen flex flex-col gap-4 items-center justify-center">
-      <h1 class="lg:text-6xl text-4xl font-bold mb-10 lg:text-center leading-relaxed">
+    <section
+      class="flex min-h-screen flex-col items-center justify-center gap-4"
+    >
+      <h1
+        class="mb-10 text-4xl font-bold leading-relaxed lg:text-center lg:text-6xl"
+      >
         The โง่ Hackathon ครั้งที่ 7 เเห่งประเทศ Thailand
       </h1>
       <Progress value={progress} />
-      <p class="lg:text-4xl text-2xl text-center">สำเร็จ {progress}%</p>
+      <p class="text-center text-2xl lg:text-4xl">สำเร็จ {progress}%</p>
     </section>
     <section class="flex flex-col gap-4 py-16">
       <h2 class="text-6xl font-bold">
