@@ -3,8 +3,8 @@ import Layout from "../layouts/Layout.astro";
 import Progress from "../components/Progress.astro";
 import Airtable from "airtable";
 
-const base = new Airtable({ apiKey: import.meta.env.PUBLIC_AIRTABLE_API_KEY }).base(
-  import.meta.env.PUBLIC_AIRTABLE_API_KEY
+const base = new Airtable({ apiKey: import.meta.env.AIRTABLE_API_KEY }).base(
+  import.meta.env.AIRTABLE_BASE_ID
 );
 
 const goalAmount = 100000;

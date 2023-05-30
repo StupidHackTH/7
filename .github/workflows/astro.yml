@@ -51,8 +51,8 @@ jobs:
             --site "${{ steps.pages.outputs.origin }}" \
             --base "${{ steps.pages.outputs.base_path }}"
         env:
-          PUBLIC_AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
-          PUBLIC_AIRTABLE_BASE_ID: ${{ secrets.AIRTABLE_BASE_ID }}
+          AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+          AIRTABLE_BASE_ID: ${{ secrets.AIRTABLE_BASE_ID }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
