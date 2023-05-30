@@ -14,7 +14,7 @@ async function getSponsoredAmount() {
   const records = await base("sponsors").select().all();
 
   records.forEach(function (record) {
-    amount += +record.get("Amount");
+    amount += +record!.get("Amount");
   });
 
   return amount;
@@ -27,13 +27,29 @@ const progress = ((await getSponsoredAmount()) / goalAmount) * 100;
   title="The โง่ Hackathon ครั้งที่ 7 เเห่งประเทศ Thailand"
   description="หลังจากที่ได้รับการตอบรับเป็นอย่างดีมาตลอดใน The Stupid Hackathon Thailand ทั้ง 6 ครั้ง, ปีนี้เรากลับมาแล้วกับ The โง่ Hackathon ครั้งที่ 7 แห่งประเทศ Thailand!"
 >
-  <main class="flex flex-col items-center gap-4 py-16">
-    <h1 class="text-6xl font-bold">
-      The โง่ Hackathon ครั้งที่ 7 เเห่งประเทศ Thailand
-    </h1>
-    <Progress value={progress} />
-    <p class="text-4xl font-bold">สำเร็จ {progress}%</p>
+  <main class="flex flex-col items-center gap-4 px-16">
+    <section class="min-h-screen flex flex-col gap-4 items-center justify-center">
+      <h1 class="lg:text-6xl text-4xl font-bold mb-10 lg:text-center leading-relaxed">
+        The โง่ Hackathon ครั้งที่ 7 เเห่งประเทศ Thailand
+      </h1>
+      <Progress value={progress} />
+      <p class="lg:text-4xl text-2xl text-center">สำเร็จ {progress}%</p>
+    </section>
+    <section class="flex flex-col gap-4 py-16">
+      <h2 class="text-6xl font-bold">
+        <p>Hall of</p>
+        <p>เกียรติยศ</p>
+      </h2>
 
+      <div class="grid grid-cols-3 gap-4">
+        <div class="h-20 w-20 bg-white"></div>
+        <div class="h-20 w-20 bg-white"></div>
+        <div class="h-20 w-20 bg-white"></div>
+        <div class="h-20 w-20 bg-white"></div>
+        <div class="h-20 w-20 bg-white"></div>
+        <div class="h-20 w-20 bg-white"></div>
+      </div>
+    </section>
     <section class="flex flex-col gap-4 py-16">
       <h2 class="text-6xl font-bold">
         <p>Hall of</p>
