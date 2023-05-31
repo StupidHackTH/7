@@ -3,9 +3,21 @@ import Layout from "../layouts/Layout.astro";
 import Progress from "../components/Progress.astro";
 import Airtable from "airtable";
 
-const base = new Airtable({ apiKey: import.meta.env.AIRTABLE_API_KEY }).base(
-  import.meta.env.AIRTABLE_BASE_ID
-);
+const apiKey = import.meta.env.AIRTABLE_API_KEY;
+
+const airtableMock = ((bruh?: string) => {
+  return {
+    select: () => airtableMock("bruh"),
+    all: () => [{ get: () => 69420 }],
+  };
+}) as unknown as ReturnType<Airtable["base"]>;
+
+const base =
+  import.meta.env.MODE !== "development" || apiKey
+    ? new Airtable({ apiKey: import.meta.env.AIRTABLE_API_KEY }).base(
+        import.meta.env.AIRTABLE_BASE_ID
+      )
+    : airtableMock;
 
 const goalAmount = 100000;
 
@@ -13,8 +25,8 @@ async function getSponsoredAmount() {
   let amount = 0;
   const records = await base("sponsors").select().all();
 
-  records.forEach(function (record) {
-    amount += +record.get("Amount");
+  records.forEach((record) => {
+    amount += +record.get("Amount")!;
   });
 
   return amount;
@@ -32,24 +44,24 @@ const progress = ((await getSponsoredAmount()) / goalAmount) * 100;
       class="flex min-h-screen flex-col items-center justify-center gap-4"
     >
       <img
-        src="/assets/hand.svg"
+        src="./assets/hand.svg"
         alt="hand"
         class="absolute left-0 top-6 -z-10 w-20 lg:w-fit"
       />
       <img
-        src="/assets/handandflower.svg"
+        src="./assets/handandflower.svg"
         alt="handandflower"
         class="absolute right-0 top-6 -z-10 w-60 lg:w-fit"
       />
       <img
-        src="/assets/handandflower2.svg"
+        src="./assets/handandflower2.svg"
         alt="flower"
-        class="absolute bottom-0 left-0 -z-10 w-32 lg:w-60 lg:w-fit"
+        class="absolute bottom-0 left-0 -z-10 w-32 lg:w-fit"
       />
       <img
-        src="/assets/jar.svg"
+        src="./assets/jar.svg"
         alt="jar"
-        class="absolute bottom-0 right-0 -z-10 w-28 lg:w-60 lg:w-fit"
+        class="absolute bottom-0 right-0 -z-10 w-28 lg:w-fit"
       />
 
       <h1
@@ -58,7 +70,9 @@ const progress = ((await getSponsoredAmount()) / goalAmount) * 100;
         The โง่ Hackathon ครั้งที่ 7<br />เเห่งประเทศ Thailand
       </h1>
       <Progress value={progress} />
-      <p class="text-center text-2xl lg:text-4xl">สำเร็จ {progress}%</p>
+      <p class="text-center text-2xl lg:text-4xl">
+        สำเร็จ {progress.toFixed(4)}%
+      </p>
       <p class="hidden text-center lg:block">
         To make this event happens, we need your money 🫵.
       </p>
@@ -87,7 +101,7 @@ const progress = ((await getSponsoredAmount()) / goalAmount) * 100;
       </div>
 
       <img
-        src="/assets/hand2.svg"
+        src="./assets/hand2.svg"
         alt="hand"
         class="absolute left-0 -z-10 w-32 lg:w-48"
       />
@@ -113,8 +127,8 @@ const progress = ((await getSponsoredAmount()) / goalAmount) * 100;
         <div class="mx-auto">wit03</div>
         <div class="mx-auto">wit03</div>
       </div>
-      <img src="/assets/weirdhooman.svg" alt="hooman" class="w-32" />
-      <img src="/assets/creators-logo.svg" alt="logo" class="w-32 pt-64" />
+      <img src="./assets/weirdhooman.svg" alt="hooman" class="w-32" />
+      <img src="./assets/creators-logo.svg" alt="logo" class="w-32 pt-64" />
     </section>
   </main>
 </Layout>
