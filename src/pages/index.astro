@@ -14,7 +14,7 @@ async function getSponsoredAmount() {
   const records = await base("sponsors").select().all();
 
   records.forEach(function (record) {
-    amount += +record!.get("Amount");
+    amount += +record.get("Amount");
   });
 
   return amount;
@@ -31,6 +31,27 @@ const progress = ((await getSponsoredAmount()) / goalAmount) * 100;
     <section
       class="flex min-h-screen flex-col items-center justify-center gap-4"
     >
+      <img
+        src="/assets/hand.svg"
+        alt="hand"
+        class="absolute left-0 top-6 w-20 lg:w-fit"
+      />
+      <img
+        src="/assets/handandflower.svg"
+        alt="handandflower"
+        class="absolute right-0 top-6"
+      />
+      <img
+        src="/assets/handandflower2.svg"
+        alt="flower"
+        class="absolute bottom-0 left-0 w-40 lg:w-fit"
+      />
+      <img
+        src="/assets/jar.svg"
+        alt="jar"
+        class="absolute bottom-0 right-0 -z-10 w-32 lg:w-fit"
+      />
+
       <h1
         class="mb-10 text-4xl font-bold leading-relaxed lg:text-center lg:text-6xl"
       >
@@ -39,8 +60,8 @@ const progress = ((await getSponsoredAmount()) / goalAmount) * 100;
       <Progress value={progress} />
       <p class="text-center text-2xl lg:text-4xl">สำเร็จ {progress}%</p>
     </section>
-    <section class="flex flex-col gap-4 py-16">
-      <h2 class="text-6xl font-bold">
+    <section class="flex flex-col gap-8 py-16">
+      <h2 class="text-center text-6xl font-bold leading-normal">
         <p>Hall of</p>
         <p>เกียรติยศ</p>
       </h2>
@@ -55,9 +76,9 @@ const progress = ((await getSponsoredAmount()) / goalAmount) * 100;
       </div>
     </section>
     <section class="flex flex-col gap-4 py-16">
-      <h2 class="text-6xl font-bold">
+      <h2 class="text-center text-6xl font-bold">
         <p>Hall of</p>
-        <p>เกียรติยศ</p>
+        <p>คนรวย</p>
       </h2>
 
       <div class="grid grid-cols-3 gap-4">
