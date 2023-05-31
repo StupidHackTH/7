@@ -34,61 +34,87 @@ const progress = ((await getSponsoredAmount()) / goalAmount) * 100;
       <img
         src="/assets/hand.svg"
         alt="hand"
-        class="absolute left-0 top-6 w-20 lg:w-fit"
+        class="absolute left-0 top-6 -z-10 w-20 lg:w-fit"
       />
       <img
         src="/assets/handandflower.svg"
         alt="handandflower"
-        class="absolute right-0 top-6"
+        class="absolute right-0 top-6 -z-10 w-60 lg:w-fit"
       />
       <img
         src="/assets/handandflower2.svg"
         alt="flower"
-        class="absolute bottom-0 left-0 w-40 lg:w-fit"
+        class="absolute bottom-0 left-0 -z-10 w-32 lg:w-60 lg:w-fit"
       />
       <img
         src="/assets/jar.svg"
         alt="jar"
-        class="absolute bottom-0 right-0 -z-10 w-32 lg:w-fit"
+        class="absolute bottom-0 right-0 -z-10 w-28 lg:w-60 lg:w-fit"
       />
 
       <h1
         class="mb-10 text-4xl font-bold leading-relaxed lg:text-center lg:text-6xl"
       >
-        The โง่ Hackathon ครั้งที่ 7 เเห่งประเทศ Thailand
+        The โง่ Hackathon ครั้งที่ 7<br />เเห่งประเทศ Thailand
       </h1>
       <Progress value={progress} />
       <p class="text-center text-2xl lg:text-4xl">สำเร็จ {progress}%</p>
+      <p class="hidden text-center lg:block">
+        To make this event happens, we need your money 🫵.
+      </p>
+      <p class="text-center">
+        Visit this <a
+          class="underline"
+          href="https://creatorsgarten.org/wiki/Sponsorship/sht7">link</a
+        > to sponsor us.
+      </p>
     </section>
-    <section class="flex flex-col gap-8 py-16">
-      <h2 class="text-center text-6xl font-bold leading-normal">
-        <p>Hall of</p>
-        <p>เกียรติยศ</p>
-      </h2>
+    <section class="">
+      <div class="flex flex-col gap-4 pb-32">
+        <h2 class="text-bold text-center text-5xl leading-normal">
+          <p>Hall of</p>
+          <p>เกียรติยศ</p>
+        </h2>
 
-      <div class="grid grid-cols-3 gap-4">
-        <div class="h-20 w-20 bg-white"></div>
-        <div class="h-20 w-20 bg-white"></div>
-        <div class="h-20 w-20 bg-white"></div>
-        <div class="h-20 w-20 bg-white"></div>
-        <div class="h-20 w-20 bg-white"></div>
-        <div class="h-20 w-20 bg-white"></div>
+        <div class="grid grid-cols-2 gap-14 lg:grid-cols-3">
+          <div class="h-32 w-32 bg-white"></div>
+          <div class="h-32 w-32 bg-white"></div>
+          <div class="h-32 w-32 bg-white"></div>
+          <div class="h-32 w-32 bg-white"></div>
+          <div class="h-32 w-32 bg-white"></div>
+          <div class="h-32 w-32 bg-white"></div>
+        </div>
       </div>
+
+      <img
+        src="/assets/hand2.svg"
+        alt="hand"
+        class="absolute left-0 -z-10 w-32 lg:w-48"
+      />
     </section>
-    <section class="flex flex-col gap-4 py-16">
-      <h2 class="text-center text-6xl font-bold">
+
+    <section class="flex flex-col items-center justify-center gap-4 py-16">
+      <h2 class="text-bold text-center text-5xl">
         <p>Hall of</p>
         <p>คนรวย</p>
       </h2>
 
-      <div class="grid grid-cols-3 gap-4">
-        <div class="h-20 w-20 bg-white"></div>
-        <div class="h-20 w-20 bg-white"></div>
-        <div class="h-20 w-20 bg-white"></div>
-        <div class="h-20 w-20 bg-white"></div>
-        <div class="h-20 w-20 bg-white"></div>
-        <div class="h-20 w-20 bg-white"></div>
+      <div class="grid grid-cols-2 gap-x-32 gap-y-4 pb-32 pt-14 lg:grid-cols-3">
+        <div class="mx-auto">wit03</div>
+        <div class="mx-auto">wit03</div>
+        <div class="mx-auto">wit03</div>
+        <div class="mx-auto">wit03</div>
+        <div class="mx-auto">wit03</div>
+        <div class="mx-auto">wit03</div>
+        <div class="mx-auto">wit03</div>
+        <div class="mx-auto">wit03</div>
+        <div class="mx-auto">wit03</div>
+        <div class="mx-auto">wit03</div>
+        <div class="mx-auto">wit03</div>
+        <div class="mx-auto">wit03</div>
       </div>
+      <img src="/assets/weirdhooman.svg" alt="hooman" class="w-32" />
+      <img src="/assets/creators-logo.svg" alt="logo" class="w-32 pt-64" />
     </section>
   </main>
 </Layout>
