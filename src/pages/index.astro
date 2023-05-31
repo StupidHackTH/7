@@ -32,6 +32,31 @@ async function getSponsoredAmount() {
   return amount;
 }
 
+async function getCoorperateSponsor() {
+  const records = await base("sponsors")
+    .select({
+      filterByFormula: "{Type} = '💰 I’m Rich™️ Sponsorship'",
+    })
+    .all();
+
+  return records.map((record) => ({
+    url: record.get("Logo")?.[0]?.url,
+  }));
+}
+
+async function getInvididualSponsor() {
+  const records = await base("sponsors")
+    .select({
+      filterByFormula: "{Type} = '👀 Individual Sponsorship'",
+    })
+    .all();
+
+  return records.map((record) => ({
+    name: record.get("Name"),
+  }));
+}
+
+console.log(await getInvididualSponsor());
 const progress = ((await getSponsoredAmount()) / goalAmount) * 100;
 ---
 
@@ -91,12 +116,11 @@ const progress = ((await getSponsoredAmount()) / goalAmount) * 100;
         </h2>
 
         <div class="grid grid-cols-2 gap-14 lg:grid-cols-3">
-          <div class="h-32 w-32 bg-white"></div>
-          <div class="h-32 w-32 bg-white"></div>
-          <div class="h-32 w-32 bg-white"></div>
-          <div class="h-32 w-32 bg-white"></div>
-          <div class="h-32 w-32 bg-white"></div>
-          <div class="h-32 w-32 bg-white"></div>
+          {
+            getCoorperateSponsor().then((e) =>
+              e.map((e) => <img src={e.url} alt="sponsor" class="h-32 w-32" />)
+            )
+          }
         </div>
       </div>
 
@@ -114,18 +138,11 @@ const progress = ((await getSponsoredAmount()) / goalAmount) * 100;
       </h2>
 
       <div class="grid grid-cols-2 gap-x-32 gap-y-4 pt-14 lg:grid-cols-3">
-        <div class="mx-auto">wit03</div>
-        <div class="mx-auto">wit03</div>
-        <div class="mx-auto">wit03</div>
-        <div class="mx-auto">wit03</div>
-        <div class="mx-auto">wit03</div>
-        <div class="mx-auto">wit03</div>
-        <div class="mx-auto">wit03</div>
-        <div class="mx-auto">wit03</div>
-        <div class="mx-auto">wit03</div>
-        <div class="mx-auto">wit03</div>
-        <div class="mx-auto">wit03</div>
-        <div class="mx-auto">wit03</div>
+        {
+          getInvididualSponsor().then((e) =>
+            e.map((e) => <div class="mx-auto">{e.name}</div>)
+          )
+        }
       </div>
       <img src="/7/assets/weirdhooman.svg" alt="hooman" class="mt-64 w-32" />
 
