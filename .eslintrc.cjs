@@ -8,12 +8,13 @@ const config = {
     node: true,
   },
   parser: "@typescript-eslint/parser",
-  plugins: ["@typescript-eslint", "prettier", "astro"],
+  plugins: ["@typescript-eslint", "prettier", "astro", "jsx-a11y"],
   extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
     "plugin:astro/recommended",
+    "plugin:jsx-a11y/recommended",
   ],
   overrides: [
     {

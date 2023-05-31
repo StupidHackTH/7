@@ -5,7 +5,7 @@ import Airtable from "airtable";
 
 const apiKey = import.meta.env.AIRTABLE_API_KEY;
 
-const airtableMock = ((bruh?: string) => {
+const airtableMock = (() => {
   return {
     select: () => airtableMock("bruh"),
     all: () => [{ get: () => 69420 }],
@@ -26,7 +26,7 @@ async function getSponsoredAmount() {
   const records = await base("sponsors").select().all();
 
   records.forEach((record) => {
-    amount += +record.get("Amount")!;
+    amount += +(record.get("Amount") ?? 0);
   });
 
   return amount;
@@ -128,7 +128,10 @@ const progress = ((await getSponsoredAmount()) / goalAmount) * 100;
         <div class="mx-auto">wit03</div>
       </div>
       <img src="/7/assets/weirdhooman.svg" alt="hooman" class="w-32" />
-      <img src="/7/assets/creators-logo.svg" alt="logo" class="w-32 pt-64" />
+
+      <a href="https://creatorsgarten.org" target="_blank" class="mt-64">
+        <img src="/7/assets/creators-logo.svg" alt="logo" class="w-32" />
+      </a>
     </section>
   </main>
 </Layout>
