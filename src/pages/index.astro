@@ -32,18 +32,6 @@ async function getSponsoredAmount() {
   return amount;
 }
 
-async function getCoorperateSponsor() {
-  const records = await base("sponsors")
-    .select({
-      filterByFormula: "{Type} = '💰 I’m Rich™️ Sponsorship'",
-    })
-    .all();
-
-  return records.map((record) => ({
-    url: record.get("Logo")?.[0]?.url,
-  }));
-}
-
 async function getInvididualSponsor() {
   const records = await base("sponsors")
     .select({
@@ -141,11 +129,11 @@ const progress = ((await getSponsoredAmount()) / goalAmount) * 100;
         </h2>
 
         <div class="grid grid-cols-2 gap-14 lg:grid-cols-3">
-          {
-            getCoorperateSponsor().then((e) =>
-              e.map((e) => <img src={e.url} alt="sponsor" class="h-32 w-32" />)
-            )
-          }
+          <img
+            src="/7/assets/hackth.jpg"
+            alt="sponsor"
+            class="h-32 w-32 rounded-full"
+          />
         </div>
       </div>
 
