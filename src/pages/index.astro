@@ -58,12 +58,12 @@ const progress = ((await getSponsoredAmount()) / goalAmount) * 100;
       <img
         src="/7/assets/hand.svg"
         alt="hand"
-        class="absolute left-0 top-6 -z-10 w-20 lg:w-40 xl:w-fit"
+        class="absolute left-0 top-6 -z-10 w-16 lg:w-40 xl:w-fit"
       />
       <img
         src="/7/assets/handandflower.svg"
         alt="handandflower"
-        class="absolute right-0 top-6 -z-10 w-60 lg:w-60 xl:w-fit"
+        class="absolute right-0 top-6 -z-10 w-52 lg:w-60 xl:w-fit"
       />
       <img
         src="/7/assets/handandflower2.svg"
@@ -129,21 +129,21 @@ const progress = ((await getSponsoredAmount()) / goalAmount) * 100;
           <p>เกียรติยศ</p>
         </h2>
 
-        <div class="grid grid-cols-2 gap-14 lg:grid-cols-3">
+        <div class="grid grid-cols-2 gap-4 lg:grid-cols-3 lg:gap-16">
           <img
             src="/7/assets/hackth.jpg"
             alt="Hackathon Thailand"
-            class="h-32 w-32 rounded-full"
+            class="h-24 w-24 rounded-full lg:h-32 lg:w-32"
           />
           <img
             src="/7/assets/thumb.jpeg"
             alt="Thumb"
-            class="h-32 w-32 rounded-full"
+            class="h-24 w-24 rounded-full lg:h-32 lg:w-32"
           />
           <img
             src="/7/assets/prog-th.png"
             alt="Programming.in.th"
-            class="h-32 w-32 rounded-full"
+            class="h-24 w-24 rounded-full lg:h-32 lg:w-32"
           />
         </div>
       </div>
@@ -161,7 +161,9 @@ const progress = ((await getSponsoredAmount()) / goalAmount) * 100;
         <p>คนรวย</p>
       </h2>
 
-      <div class="grid grid-cols-2 gap-x-32 gap-y-4 pt-14 lg:grid-cols-3">
+      <div
+        class="grid grid-cols-2 gap-4 pt-14 text-center lg:grid-cols-3 lg:gap-x-32 lg:gap-y-8"
+      >
         {
           getInvididualSponsor().then((e) =>
             e.map((e) => <div class="mx-auto">{e.name}</div>)
