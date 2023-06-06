@@ -1,0 +1,61 @@
+---
+import { base } from "../Handlers/airtable";
+import Progress from "../components/Progress.astro";
+
+const goalAmount = 100000;
+
+async function getSponsoredAmount() {
+  let amount = 0;
+  const records = await base("sponsors").select().all();
+
+  records.forEach((record) => {
+    amount += +(record.get("Amount") ?? 0);
+  });
+
+  return amount;
+}
+
+const progress = ((await getSponsoredAmount()) / goalAmount) * 100;
+---
+
+<section class="flex min-h-screen flex-col items-center justify-center gap-4">
+  <img
+    src="/7/assets/hand.svg"
+    alt="hand"
+    class="absolute left-0 top-6 -z-10 w-16 lg:w-40 xl:w-fit"
+  />
+  <img
+    src="/7/assets/handandflower.svg"
+    alt="handandflower"
+    class="absolute right-0 top-6 -z-10 w-52 lg:w-60 xl:w-fit"
+  />
+  <img
+    src="/7/assets/handandflower2.svg"
+    alt="flower"
+    class="absolute bottom-0 left-0 -z-10 w-32 lg:w-48 xl:w-fit"
+  />
+  <img
+    src="/7/assets/jar.svg"
+    alt="jar"
+    class="absolute bottom-0 right-0 -z-10 w-28 lg:w-48 xl:w-fit"
+  />
+
+  <h1
+    class="mb-10 text-4xl font-bold leading-relaxed lg:text-center lg:text-6xl"
+  >
+    The โง่ Hackathon ครั้งที่ 7<br />เเห่งประเทศ Thailand
+  </h1>
+  <Progress value={progress} />
+  <p class="text-center text-2xl lg:text-4xl">
+    สำเร็จ {progress.toFixed(3)}%
+  </p>
+  <p class="hidden text-center lg:block">
+    To make this event happens, we need your money 🫵.
+  </p>
+  <p class="text-center">
+    Visit this <a
+      class="underline"
+      href="https://creatorsgarten.org/wiki/Sponsorship/sht7">link</a
+    > to sponsor us.
+  </p>
+</section>

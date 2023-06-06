@@ -1,0 +1,46 @@
+---
+import { base } from "../Handlers/airtable";
+
+async function getInvididualSponsor() {
+  const records = await base("sponsors")
+    .select({
+      filterByFormula: "{Type} = '👀 Individual Sponsorship'",
+    })
+    .all();
+
+  return records.map((record) => ({
+    name: record.get("Name"),
+    link: record.get("Link"),
+  }));
+}
+---
+
+<section class="flex flex-col items-center justify-center gap-4 py-16">
+  <h2 class="text-bold text-center text-5xl">
+    <p>Hall of</p>
+    <p>คนรวย</p>
+  </h2>
+
+  <div
+    class="grid grid-cols-2 gap-4 pt-14 text-center lg:grid-cols-3 lg:gap-x-32 lg:gap-y-8"
+  >
+    {
+      getInvididualSponsor().then((e) =>
+        e.map((e) => (
+          <a
+            href={e.link ? String(e.link) : "#"}
+            class={e.link ? "underline" : ""}
+          >
+            {e.name}
+          </a>
+        ))
+      )
+    }
+  </div>
+  <img src="/7/assets/weirdhooman.svg" alt="hooman" class="mt-64 w-24" />
+
+  <a href="https://creatorsgarten.org" target="_blank" class="mt-32">
+    <p class="mb-4">Organized by:</p>
+    <img src="/7/assets/creators-logo.svg" alt="logo" class="w-32" />
+  </a>
+</section>
