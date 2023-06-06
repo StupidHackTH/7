@@ -41,6 +41,7 @@ async function getInvididualSponsor() {
 
   return records.map((record) => ({
     name: record.get("Name"),
+    link: record.get("Link"),
   }));
 }
 
@@ -166,7 +167,14 @@ const progress = ((await getSponsoredAmount()) / goalAmount) * 100;
       >
         {
           getInvididualSponsor().then((e) =>
-            e.map((e) => <div class="mx-auto">{e.name}</div>)
+            e.map((e) => (
+              <a
+                href={e.link ? String(e.link) : "#"}
+                class={e.link ? "underline" : ""}
+              >
+                {e.name}
+              </a>
+            ))
           )
         }
       </div>
