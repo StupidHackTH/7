@@ -52,6 +52,7 @@ jobs:
             --base "${{ steps.pages.outputs.base_path }}"
         env:
           AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+          AIRTABLE_API_PAT: ${{ secrets.AIRTABLE_API_PAT }}
           AIRTABLE_BASE_ID: ${{ secrets.AIRTABLE_BASE_ID }}
 
       - name: Upload artifact
