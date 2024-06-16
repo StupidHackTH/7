@@ -1,6 +1,6 @@
 import Airtable from "airtable";
 
-const apiKey = import.meta.env.AIRTABLE_API_KEY;
+const apiPat = import.meta.env.AIRTABLE_API_PAT;
 
 const airtableMock = (() => {
   return {
@@ -10,8 +10,8 @@ const airtableMock = (() => {
 }) as unknown as ReturnType<Airtable["base"]>;
 
 export const base =
-  import.meta.env.MODE !== "development" || apiKey
-    ? new Airtable({ apiKey: import.meta.env.AIRTABLE_API_KEY }).base(
+  import.meta.env.MODE !== "development" || apiPat
+    ? new Airtable({ apiKey: import.meta.env.AIRTABLE_API_PAT }).base(
         import.meta.env.AIRTABLE_BASE_ID
       )
     : airtableMock;
